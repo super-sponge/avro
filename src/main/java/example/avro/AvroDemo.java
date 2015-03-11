@@ -69,10 +69,9 @@ public class AvroDemo {
         user2.put("favorite_number", 7);
         user2.put("favorite_color", "red");
 
-        File file = new File(AVRONOGENFILE);
         DatumWriter<GenericRecord> datumWriter = new GenericDatumWriter<GenericRecord>(schema);
         DataFileWriter<GenericRecord> dataFileWriter = new DataFileWriter<GenericRecord>(datumWriter);
-        dataFileWriter.create(schema, file);
+        dataFileWriter.create(schema, new File(AVRONOGENFILE));
         dataFileWriter.append(user1);
         dataFileWriter.append(user2);
         dataFileWriter.close();
